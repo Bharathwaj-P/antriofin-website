@@ -31,8 +31,10 @@ export default function FAQ() {
               <div
                 key={f.q}
                 className={[
-                  'reveal rounded-2xl border bg-white transition-all',
-                  isOpen ? 'border-forest-200 shadow-soft' : 'border-forest-150',
+                  'rounded-2xl border bg-white transition-all duration-200',
+                  isOpen
+                  ? 'border-forest-200 shadow-soft'
+                  : 'border-forest-150',
                 ].join(' ')}
                 style={{ transitionDelay: `${i * 40}ms` }}
               >
@@ -49,8 +51,10 @@ export default function FAQ() {
                 </button>
                 <div
                   className={[
-                    'grid transition-all duration-300',
-                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+                    'grid transition-[grid-template-rows,opacity] duration-200',
+                    isOpen
+                      ? 'grid-rows-[1fr] opacity-100'
+                      : 'grid-rows-[0fr] opacity-0',
                   ].join(' ')}
                 >
                   <div className="overflow-hidden">

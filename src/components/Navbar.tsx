@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Leaf } from 'lucide-react';
+import antriofinLogo from '../assets/antriofin-logo.png';
 import { useScrolled } from '@/hooks/useReveal';
 
 const NAV_LINKS = [
@@ -35,9 +36,10 @@ export default function Navbar() {
         <div className={['flex h-16 sm:h-[72px] items-center justify-between transition-all', scrolled ? 'h-14' : ''].join(' ')}>
           {/* Logo */}
           <a href="#top" className="flex items-center gap-2.5 group" aria-label="Antriofin home">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-forest-600 to-forest-800 text-white shadow-soft transition-transform group-hover:scale-105">
-              <Leaf className="h-5 w-5" strokeWidth={2.2} />
-            </span>
+            <img
+            src={antriofinLogo}
+            alt="Antriofin"
+            className="h-10 w-10 object-contain transition-transform group-hover:scale-105"/>
             <span className="font-display text-lg font-extrabold tracking-tight text-forest-900">
               ANTRIOFIN
             </span>
