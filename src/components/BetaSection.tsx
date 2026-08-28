@@ -17,10 +17,7 @@ export default function BetaSection() {
  const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
 
-  console.log("FORM SUBMITTED");
-  console.log("FORM DATA:", form);
-
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('beta_users')
     .insert({
       name: form.name,
@@ -29,10 +26,8 @@ export default function BetaSection() {
       message: form.message,
     });
 
-  console.log("SUPABASE RESPONSE:", { data, error });
-
   if (error) {
-    console.error("SUPABASE ERROR:", error);
+    console.error("Supabase submission error:", error);
     alert(`Supabase error: ${error.message}`);
     return;
   }
