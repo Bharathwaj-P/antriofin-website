@@ -1,5 +1,5 @@
 import { Leaf, Linkedin, Instagram, Twitter } from 'lucide-react';
-
+import antriofinLogo from '../assets/antriofin-logo.png';
 const LINKS = {
   Product: [
     { label: 'Product', href: '#product' },
@@ -28,9 +28,10 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <a href="#top" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-forest-600 to-forest-800 text-white shadow-soft">
-                <Leaf className="h-5 w-5" strokeWidth={2.2} />
-              </span>
+             <img
+             src={antriofinLogo}
+             alt="Antriofin"
+             className="h-10 w-10 object-contain"/>
               <span className="font-display text-lg font-extrabold tracking-tight text-forest-900">ANTRIOFIN</span>
             </a>
             <p className="mt-4 font-display text-lg font-semibold text-forest-800">

@@ -12,7 +12,7 @@ const USER_TYPES = [
 
 export default function BetaSection() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', type: USER_TYPES[0], message: '' });
+  const [form, setForm] = useState({ name: '', email: '', mobile: '', type: USER_TYPES[0], message: '' });
 
  const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
@@ -22,6 +22,7 @@ export default function BetaSection() {
     .insert({
       name: form.name,
       email: form.email,
+      mobile: form.mobile,
       user_type: form.type,
       message: form.message,
     });
@@ -116,6 +117,19 @@ export default function BetaSection() {
                       placeholder="you@example.com"
                       className="mt-1.5 w-full rounded-xl border border-forest-100 bg-cream/50 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-500 focus:border-forest-400 focus:outline-none focus:ring-2 focus:ring-forest-200 transition"
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="beta-mobile" className="block text-sm font-medium text-ink-800">
+                      Mobile Number
+                      </label>
+                      <input
+                      id="beta-mobile"
+                      type="tel"
+                      required
+                      value={form.mobile}
+                      onChange={(e) => setForm({ ...form, mobile: e.target.value })}
+                      placeholder="+91 98765 43210"
+                      className="mt-1.5 w-full rounded-xl border border-forest-100 bg-cream/50 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-500 focus:border-forest-400 focus:outline-none focus:ring-2 focus:ring-forest-200 transition"/>
                   </div>
 
                   <div>
