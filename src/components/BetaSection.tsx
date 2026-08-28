@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const USER_TYPES = [
   'Young Professional',
@@ -13,10 +14,31 @@ export default function BetaSection() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', type: USER_TYPES[0], message: '' });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+ const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+
+  console.log("FORM SUBMITTED");
+  console.log("FORM DATA:", form);
+
+  const { data, error } = await supabase
+    .from('beta_users')
+    .insert({
+      name: form.name,
+      email: form.email,
+      user_type: form.type,
+      message: form.message,
+    });
+
+  console.log("SUPABASE RESPONSE:", { data, error });
+
+  if (error) {
+    console.error("SUPABASE ERROR:", error);
+    alert(`Supabase error: ${error.message}`);
+    return;
+  }
+
+  setSubmitted(true);
+};
 
   return (
     <section id="beta" className="isolate py-14 sm:py-20 relative overflow-hidden bg-gradient-to-br from-forest-700 via-forest-800 to-forest-950">
@@ -142,7 +164,7 @@ export default function BetaSection() {
                   </button>
 
                   <p className="text-center text-xs text-ink-600">
-                    Frontend-only demo form. No data is stored.
+                    Your information will be securely stored for the Antriofin beta.
                   </p>
                 </form>
               )}
